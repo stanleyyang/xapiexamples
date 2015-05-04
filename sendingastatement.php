@@ -1,7 +1,7 @@
 <?php
 
-//Define needed constants
-define('ENDPOINT', 'http://localhost:8888/ll/learninglocker_test/public/data/xAPI/statements');   //To use statement api, you must add /statements to the end
+//Define needed constants. Look at the image, that is in this repo
+define('ENDPOINT', 'http://localhost:8888/ll/learninglocker_test/public/data/xAPI/statements');
 define('USERNAME', 'a5c960f66ebb0013e1152504801b70770e342580');
 define('PASSWORD', '41100a94622766b876e918d87c316d34ebbf3f7b');
 define('XAPIVERSIONHEADER', 'X-Experience-API-Version: 1.0.1');
@@ -29,7 +29,7 @@ $statement = array(
     ),
   ),
   'object' => array(
-    'id' => 'http://www.kursused.jee/courses/testcourse', //https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#acturi
+    'id' => 'http://www.kursused.jee/courses/testcourse', // https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#acturi
     'objectType' => 'Activity',
     'definition' => array(
       'type' => 'http://adlnet.gov/expapi/activities/course',   // example place to look for activity types: https://registry.tincanapi.com/#home/activityTypes
@@ -59,8 +59,10 @@ curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($curl, CURLOPT_POSTFIELDS, $statement);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 
-$data = curl_exec($curl);
-error_log(print_r($data, true));    // Returns the UUID of the inserted statement
-curl_close($curl);
 
-?>
+$data = curl_exec($curl);
+
+header("Content-Type:text/plain");
+echo "Returns the UUIDs of sent statements, or errors".PHP_EOL;
+print_r($data);    // Returns the UUID of the inserted statement
+curl_close($curl);

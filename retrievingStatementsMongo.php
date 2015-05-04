@@ -1,5 +1,6 @@
 <?php
 
+// Assumes a local mongo install
 $connection = new MongoClient();
 $db = $connection->selectDB('learninglockerstable'); //Database name
 
@@ -8,9 +9,9 @@ $collection = $db->statements; // Choose the statements collection
 $cursor = $collection->find();  // All statements in "learninglockerstable" database
 // http://php.net/manual/en/mongocollection.find.php
 
-
+header("Content-Type:text/plain");
 foreach($cursor as $document){
-  //error_log(print_r($document, true));
+  print_r($document);
 }
 
 
@@ -22,8 +23,5 @@ $query = array(
 
 $cursor = $collection->find($query);
 foreach($cursor as $document){
-  error_log(print_r($document, true));
+  print_r($document);
 }
-
-
-?>
