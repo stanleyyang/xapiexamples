@@ -5,3 +5,5 @@ After LearningLocker installation, create an LRS and navigate to it. Then click 
 
 
 The https://github.com/RKoitsalu/xapiexamples/blob/master/sendingastatement.php file is an example of how to easily create a statement and send it to LearningLocker.
+
+The https://github.com/RKoitsalu/xapiexamples/blob/master/retrievingStatementsMongo.php file is an example of how to query statements from LearningLockers mongoDB.
